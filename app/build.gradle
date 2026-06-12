@@ -11,7 +11,7 @@ def getLocalProperty(String key) {
         properties.load(new FileInputStream(propertiesFile))
         return properties.getProperty(key)
     }
-    return '""' // Default empty string if not found
+    return '""'
 }
 
 android {
@@ -24,10 +24,8 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-        
-        // Injecting secure keys into BuildConfig
+
         buildConfigField "String", "IMAGEKIT_PUBLIC_KEY", getLocalProperty("IMAGEKIT_PUBLIC_KEY")
-        buildConfigField "String", "IMAGEKIT_PRIVATE_KEY", getLocalProperty("IMAGEKIT_PRIVATE_KEY")
         buildConfigField "String", "FIREBASE_API_KEY", getLocalProperty("FIREBASE_API_KEY")
         buildConfigField "String", "FIREBASE_APP_ID", getLocalProperty("FIREBASE_APP_ID")
     }
@@ -40,14 +38,16 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
-    
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = '17'
     }
@@ -58,4 +58,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.10.0'
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
 }

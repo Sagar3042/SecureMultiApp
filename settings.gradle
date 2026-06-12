@@ -1,0 +1,2 @@
+rootProject.name = "SecureMultiApp"
+include ':app'

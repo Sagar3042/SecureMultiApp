@@ -3,6 +3,17 @@ plugins {
     id 'kotlin-android'
 }
 
+// Function to read local.properties
+def getLocalProperty(String key) {
+    def propertiesFile = rootProject.file("local.properties")
+    if (propertiesFile.exists()) {
+        def properties = new Properties()
+        properties.load(new FileInputStream(propertiesFile))
+        return properties.getProperty(key)
+    }
+    return '""' // Default empty string if not found
+}
+
 android {
     namespace 'com.securemultiapp'
     compileSdk 34
@@ -13,6 +24,16 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
+        
+        // Injecting secure keys into BuildConfig
+        buildConfigField "String", "IMAGEKIT_PUBLIC_KEY", getLocalProperty("IMAGEKIT_PUBLIC_KEY")
+        buildConfigField "String", "IMAGEKIT_PRIVATE_KEY", getLocalProperty("IMAGEKIT_PRIVATE_KEY")
+        buildConfigField "String", "FIREBASE_API_KEY", getLocalProperty("FIREBASE_API_KEY")
+        buildConfigField "String", "FIREBASE_APP_ID", getLocalProperty("FIREBASE_APP_ID")
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {

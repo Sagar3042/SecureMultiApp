@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1073832068296",
+    "project_id": "song-bde7e",
+    "storage_bucket": "song-bde7e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073832068296:android:981842d4b6b7dabbdd51fd",
+        "android_client_info": {
+          "package_name": "com.securemultiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073832068296-usljtnjgvkmhlhbndjq5a4oneloc1skf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw1IprrJqG7s_ZfKIu8lmcqPNwIJENhFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073832068296-usljtnjgvkmhlhbndjq5a4oneloc1skf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
